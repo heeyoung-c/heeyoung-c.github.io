@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SMALL-CAMPUS</title>
+    <link>https://heeyoung-c.github.io/</link>
+    
+    <atom:link href="https://heeyoung-c.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>열심히 공부하고 있습니다</description>
+    <pubDate>Fri, 08 Apr 2022 06:25:39 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>백준 1193 Node.js</title>
+      <link>https://heeyoung-c.github.io/2022/04/08/%EB%B0%B1%EC%A4%80%201193/</link>
+      <guid>https://heeyoung-c.github.io/2022/04/08/%EB%B0%B1%EC%A4%80%201193/</guid>
+      <pubDate>Thu, 07 Apr 2022 15:40:38 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;문제-링크&quot;&gt;&lt;a href=&quot;#문제-링크&quot; class=&quot;headerlink&quot; title=&quot;문제 링크&quot;&gt;&lt;/a&gt;문제 링크&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;백준 1193번: (&lt;a href=&quot;https://www.acmicpc.net/problem/</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="문제-링크"><a href="#문제-링크" class="headerlink" title="문제 링크"></a>문제 링크</h2><ul><li>백준 1193번: (<a href="https://www.acmicpc.net/problem/1193">https://www.acmicpc.net/problem/1193</a>)</li></ul><hr><h2 id="풀이"><a href="#풀이" class="headerlink" title="풀이"></a>풀이</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> input = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>).<span class="title function_">readFileSync</span>(<span class="string">&#x27;예제.txt&#x27;</span>).<span class="title function_">toString</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력 받은 값을 숫자로 받아와서 num에 저장한다</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="title class_">Number</span>(input)</span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 해당 숫자가 몇 번째 라인에 있는지</span></span><br><span class="line"><span class="keyword">while</span> (sum &lt; num) &#123;</span><br><span class="line">  i++</span><br><span class="line">  sum += i</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title class_">Math</span>.<span class="title function_">abs</span>(sum - num)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 그 숫자는 해당 라인 몇 번째에 위치하는지</span></span><br><span class="line"><span class="keyword">if</span> (i % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>((i - a) + <span class="string">&#x27;/&#x27;</span> + (<span class="number">1</span> + a))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="number">1</span> + a) + <span class="string">&#x27;/&#x27;</span> + (i - a))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><p>우선 문제 이해를 위해 이렇게 바꿔보자<br><img src = "/images/algorithm/1193-1.png" width = "500px" alt = "1193"></p><ol><li><p>주어진 숫자가 몇 번째 라인에 위치하는지 먼저 알아야 한다<br>while 문의 조건을 sum &lt; num 으로 설정 하고, sum에는 1 + 2 + 3 + 4 이런식으로 값이 더해진다.<br>9를 예로 들어보자, 1 + 2 + 3 + 4 &#x3D; 10 이므로, 9 보다 값이 커지게 되므로, i &#x3D; 4 가 된다<br>즉 while 문으로 9가 4번째 라인에 위치한다는 것을 알 수 있다</p></li><li><p>해당 라인에서 몇번째에 위치하는가?<br>짝수인 경우와 홀수인 경우로 나눌 수 있는데, 짝수인 경우 끝에 위치하는 분수의 형태는 i &#x2F; 1,<br>홀수인 경우 끝에 위치하는 분수의 형태는 1 &#x2F; i 인 것을 확인 할 수 있다.<br>각 라인의 마지막 숫자는 sum 이 되기 때문에(순차적으로 수가 더해지는 규칙이 있기 때문 1 + 2 + 3…)<br>sum - num 의 절댓값을 변수 a 에 저장한 뒤, 이 값을 짝수 일 때는 (i - a) &#x2F; (1 + a)<br>홀수 일 때는 (1 + a) &#x2F; (i - a) 로 출력하면 된다</p></li></ol>]]></content:encoded>
+      
+      
+      <category domain="https://heeyoung-c.github.io/categories/Algorithm/">Algorithm</category>
+      
+      
+      <category domain="https://heeyoung-c.github.io/tags/Algorithm/">Algorithm</category>
+      
+      <category domain="https://heeyoung-c.github.io/tags/%EB%B0%B1%EC%A4%80/">백준</category>
+      
+      
+      <comments>https://heeyoung-c.github.io/2022/04/08/%EB%B0%B1%EC%A4%80%201193/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
